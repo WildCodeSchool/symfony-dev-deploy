@@ -13,7 +13,7 @@ if [ ! $? = 0 ]; then
 fi
 
 # Copy php.ini CLI configuration
-mv $(php -r "echo php_ini_loaded_file();") /etc/php/7.3/apache2/php.ini
+sudo mv $(php -r "echo php_ini_loaded_file();") /etc/php/7.3/apache2/php.ini
 if [ ! $? = 0 ]; then
     exit 1
 fi

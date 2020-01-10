@@ -586,7 +586,7 @@ sudo apt update
 sudo apt install apache2 -y
 
 # Copy php.ini CLI configuration
-mv $(php -r "echo php_ini_loaded_file();") /etc/php/7.3/apache2/php.ini
+sudo mv $(php -r "echo php_ini_loaded_file();") /etc/php/7.3/apache2/php.ini
 ```
 
 **Installed Apache Modules:** core_module, so_module, watchdog_module, http_module, log_config_module, logio_module, version_module, unixd_module, access_compat_module, alias_module, auth_basic_module, authn_core_module, authn_file_module, authz_core_module, authz_host_module, authz_user_module, autoindex_module, deflate_module, dir_module, env_module, filter_module, headers_module, mime_module, mpm_prefork_module, negotiation_module, php7_module, reqtimeout_module, rewrite_module, setenvif_module, socache_shmcb_module, ssl_module, status_module
