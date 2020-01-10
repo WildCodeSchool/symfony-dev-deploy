@@ -4,6 +4,8 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 # Reload your $PATH
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 
+choco -v
+
 # Install
 choco install git -y
 
@@ -97,8 +99,13 @@ choco install nodejs --version=12.13.1 -y
 # Reload $PATH
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 
+node -v
+npm -v
+
 # Install
 choco install yarn --version=1.21.1 -y
 
 # Reload $PATH
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+
+yarn -v
