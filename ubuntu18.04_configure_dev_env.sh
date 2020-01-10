@@ -43,7 +43,7 @@ if [ ! $? = 0 ]; then
 fi
 
 # Add PHP official repository
-sudo add-apt-repository ppa:ondrej/php
+sudo add-apt-repository ppa:ondrej/php -y
 if [ ! $? = 0 ]; then
     exit 1
 fi

@@ -296,7 +296,7 @@ Ubuntu 18.04:
 
 ```bash
 # Add PHP official repository
-sudo add-apt-repository ppa:ondrej/php
+sudo add-apt-repository ppa:ondrej/php -y
 
 # Update packages list
 sudo apt update
