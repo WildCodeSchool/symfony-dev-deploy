@@ -15,6 +15,11 @@ brew install git
 if [ ! $? = 0 ]; then
     exit 1
 fi
+# Reload $PATH
+export PATH="/usr/local/bin:$PATH"
+if [ ! $? = 0 ]; then
+    exit 1
+fi
 git --version
 if [ ! $? = 0 ]; then
     exit 1

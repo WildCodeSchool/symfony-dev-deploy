@@ -220,6 +220,9 @@ MacOS 10.15:
 ```bash
 # Install
 brew install git
+
+# Reload $PATH
+export PATH="/usr/local/bin:$PATH"
 ```
 
 Windows 10:
