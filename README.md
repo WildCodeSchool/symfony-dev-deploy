@@ -56,14 +56,14 @@ Ubuntu 18.04:
 
 ```bash
 # Get and execute script directly
-wget -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_configure_dev_env.sh | bash
+bash <(wget -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_configure_dev_env.sh)
 ```
 
 MacOS 10.15:
 
 ```bash
 # Get and execute script directly
-curl -L https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/macos10.15_configure_dev_env.sh | bash
+bash <(curl -L https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/macos10.15_configure_dev_env.sh)
 ```
 
 Windows 10:
@@ -85,7 +85,7 @@ Ubuntu 18.04 server:
 
 ```bash
 # Get and execute script directly
-wget -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_configure_deploy_env.sh | bash
+bash <(wget -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_configure_deploy_env.sh)
 ```
 
 *See [manual instructions](#manual-configuration-deploy-a-new-app) for details.*
@@ -100,7 +100,7 @@ Ubuntu 18.04 (remote machine):
 
 ```bash
 # Get and execute script directly
-wget -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_create_app.sh | bash
+bash <(wget -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_create_app.sh)
 ```
 
 *Note: just after the "bash" command, you can pass the app name, the domain name and the repository URL as arguments in order to make the script non-interactive (eg. … bash myawesameapp example.com <https://github.com/me/myapp>).*
@@ -115,7 +115,7 @@ Ubuntu 18.04 (remote machine):
 
 ```bash
 # Get and execute script directly
-wget -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_update_app.sh | bash
+bash <(wget -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_update_app.sh)
 ```
 
 *Note: just after the "bash" command, you can pass the app name as an argument in order to make the script non-interactive (eg. … bash myawesameapp).*
