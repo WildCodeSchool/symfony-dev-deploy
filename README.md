@@ -788,6 +788,7 @@ cat > /etc/apache2/sites-available/${appname}.conf <<EOF
     CustomLog /var/log/apache2/access.${appname}.log combined
 
     # Configure HTTPS
+    SSLEngine on
     SSLCertificateFile /etc/letsencrypt/live/${appdomain}/fullchain.pem
     SSLCertificateKeyFile /etc/letsencrypt/live/${appdomain}/privkey.pem
 </VirtualHost>
