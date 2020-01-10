@@ -144,10 +144,10 @@ jobs:
     steps:
     - name: Deploy updates
       run: |
-        sshpass -p ${{ SSH_PASS }} ssh \
-        -tt ${{ SSH_USER }}@${{ SSH_HOST }} \
+        sshpass -p ${{ secrets.SSH_PASS }} ssh \
+        -tt ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
         -o StrictHostKeyChecking=no \
-        "appname=${{ APP_NAME }} && $(wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_update_app.sh)"
+        "appname=${{ secrets.APP_NAME }} && $(wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_update_app.sh)"
 ```
 
 *Note: you must define SSH_PASS, SSH_USER, SSh_HOST and APP_NAME variables in the "Settings > Secrets" section of your GitHub repository. The APP_NAME value must match the one used to deploy the app initially.*
