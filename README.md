@@ -661,6 +661,9 @@ fi
 ```bash
 # Clone app repository
 git clone ${apprepositoryurl} /var/www/${appname}
+
+# Go inside the app directory
+cd /var/www/${appname}
 ```
 
 ### Install dependencies and build assets
@@ -691,9 +694,6 @@ find /var/www/${appname} -type f -exec chmod 644 {} \;
 
 # Set folders permissions to 755
 find /var/www/${appname} -type d -exec chmod 755 {} \;
-
-# Go inside the app directory
-cd /var/www/${appname}
 ```
 
 ### Set up the database and the production mode
@@ -861,9 +861,6 @@ find /var/www/${appname} -type f -exec chmod 644 {} \;
 
 # Set folders permissions to 755
 find /var/www/${appname} -type d -exec chmod 755 {} \;
-
-# Go inside the app directory
-cd /var/www/${appname}
 ```
 
 ### Update database structure & clearing cache
