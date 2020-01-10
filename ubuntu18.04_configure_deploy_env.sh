@@ -12,8 +12,22 @@ if [ ! $? = 0 ]; then
     exit 1
 fi
 
+# Enable modules
+sudo a2enmod ssl
+if [ ! $? = 0 ]; then
+    exit 1
+fi
+sudo a2enmod rewrite
+if [ ! $? = 0 ]; then
+    exit 1
+fi
+
 # Copy php.ini CLI configuration
 sudo mv $(php -r "echo php_ini_loaded_file();") /etc/php/7.3/apache2/php.ini
+if [ ! $? = 0 ]; then
+    exit 1
+fi
+apache2 -v
 if [ ! $? = 0 ]; then
     exit 1
 fi
