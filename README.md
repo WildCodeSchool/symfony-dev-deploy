@@ -715,7 +715,7 @@ sed -e 's,DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name,DATABA
 mv ./.env.local.tmp ./.env.local
 
 # Execute database migrations
-php bin/console doctrine:migrations:migrate -n
+php bin/console doctrine:migrations:migrate -n  2>/dev/null
 ```
 
 ### Set up the web server
