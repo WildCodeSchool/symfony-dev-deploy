@@ -37,8 +37,8 @@ The goal is to provide an opinionated, fully tested set of softwares that make a
    1. [Set up variables](#set-up-variables)
    2. [Download our app](#download-our-app)
    3. [Install dependencies and build assets](#install-dependencies-and-build-assets)
-   4. [Set permissions](#set-permissions)
-   5. [Set up the database and the production mode](#set-up-the-database-and-the-production-mode)
+   4. [Set up the database and the production mode](#set-up-the-database-and-the-production-mode)
+   5. [Set permissions](#set-permissions)
    6. [Set up the web server](#set-up-the-web-server)
    7. [Enabling HTTPS & configure for Symfony](#enabling-https--configure-for-Symfony)
 * [Manual configuration: deploy updates of an existing app](#manual-configuration-deploy-updates-of-an-existing-app)
@@ -689,21 +689,6 @@ yarn install
 yarn build
 ```
 
-### Set permissions
-
-[Back to top ↑](#table-of-contents)
-
-```bash
-# Set ownership to Apache
-sudo chown -R www-data:www-data /var/www/${appname}
-
-# Set files permissions to 644
-sudo find /var/www/${appname} -type f -exec chmod 644 {} \;
-
-# Set folders permissions to 755
-sudo find /var/www/${appname} -type d -exec chmod 755 {} \;
-```
-
 ### Set up the database and the production mode
 
 [Back to top ↑](#table-of-contents)
@@ -732,6 +717,21 @@ mv ./.env.local.tmp ./.env.local
 
 # Execute database migrations
 php bin/console doctrine:migrations:migrate -n
+```
+
+### Set permissions
+
+[Back to top ↑](#table-of-contents)
+
+```bash
+# Set ownership to Apache
+sudo chown -R www-data:www-data /var/www/${appname}
+
+# Set files permissions to 644
+sudo find /var/www/${appname} -type f -exec chmod 644 {} \;
+
+# Set folders permissions to 755
+sudo find /var/www/${appname} -type d -exec chmod 755 {} \;
 ```
 
 ### Set up the web server

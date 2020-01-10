@@ -51,24 +51,6 @@ if [ ! $? = 0 ]; then
     exit 1
 fi
 
-# Set ownership to Apache
-sudo chown -R www-data:www-data /var/www/${appname}
-if [ ! $? = 0 ]; then
-    exit 1
-fi
-
-# Set files permissions to 644
-sudo find /var/www/${appname} -type f -exec chmod 644 {} \;
-if [ ! $? = 0 ]; then
-    exit 1
-fi
-
-# Set folders permissions to 755
-sudo find /var/www/${appname} -type d -exec chmod 755 {} \;
-if [ ! $? = 0 ]; then
-    exit 1
-fi
-
 # Generate a random password for the new mysql user
 mysqlpassword=$(openssl rand -base64 20)
 if [ ! $? = 0 ]; then
@@ -113,6 +95,24 @@ fi
 
 # Execute database migrations
 php bin/console doctrine:migrations:migrate -n
+
+# Set ownership to Apache
+sudo chown -R www-data:www-data /var/www/${appname}
+if [ ! $? = 0 ]; then
+    exit 1
+fi
+
+# Set files permissions to 644
+sudo find /var/www/${appname} -type f -exec chmod 644 {} \;
+if [ ! $? = 0 ]; then
+    exit 1
+fi
+
+# Set folders permissions to 755
+sudo find /var/www/${appname} -type d -exec chmod 755 {} \;
+if [ ! $? = 0 ]; then
+    exit 1
+fi
 
 # Create an Apache conf file for the app (copy and paste all stuffs from "cat" to "EOF" in your terminal)
 cat > /etc/apache2/sites-available/${appname}.conf <<EOF
