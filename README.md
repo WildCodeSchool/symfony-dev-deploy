@@ -505,6 +505,9 @@ MacOS 10.15:
 ```bash
 # Install
 brew install node@12
+
+# Add node to $PATH
+brew link node@12 --force
 ```
 
 Windows 10:

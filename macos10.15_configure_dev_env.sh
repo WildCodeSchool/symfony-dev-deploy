@@ -138,6 +138,11 @@ brew install node@12
 if [ ! $? = 0 ]; then
     exit 1
 fi
+# Add node to $PATH
+brew link node@12 --force
+if [ ! $? = 0 ]; then
+    exit 1
+fi
 node -v
 if [ ! $? = 0 ]; then
     exit 1
