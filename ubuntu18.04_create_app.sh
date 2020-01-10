@@ -187,7 +187,6 @@ cat > /etc/apache2/sites-available/${appname}.conf <<EOF
     # Configure HTTPS
     SSLCertificateFile /etc/letsencrypt/live/${appdomain}/fullchain.pem
     SSLCertificateKeyFile /etc/letsencrypt/live/${appdomain}/privkey.pem
-    Include /etc/letsencrypt/options-ssl-apache.conf
 </VirtualHost>
 EOF
 if [ ! $? = 0 ]; then
