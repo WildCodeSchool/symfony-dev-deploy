@@ -200,7 +200,6 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 ```
 
-
 **On Windows, after each installation, you must start a new PowerShell or reload your \$PATH** in order to use the installed packages. All command listed here must only be used inside the PowerShell in **administrator mode** (not the default command prompt).
 
 ### Git
@@ -234,7 +233,6 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 ```
 
 ### Symfony CLI
-
 
 [Back to top ↑](#table-of-contents)
 
