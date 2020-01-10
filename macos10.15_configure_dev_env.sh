@@ -30,13 +30,13 @@ curl -sS https://get.symfony.com/cli/installer | bash
 if [ ! $? = 0 ]; then
     exit 1
 fi
-symfony -V
-if [ ! $? = 0 ]; then
-    exit 1
-fi
 
 # Move the executable in global bin directory in order to use it globally
 sudo mv ~/.symfony/bin/symfony /usr/local/bin/symfony
+if [ ! $? = 0 ]; then
+    exit 1
+fi
+symfony -V
 if [ ! $? = 0 ]; then
     exit 1
 fi
