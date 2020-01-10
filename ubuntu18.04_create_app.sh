@@ -33,24 +33,6 @@ if [ ! $? = 0 ]; then
     exit 1
 fi
 
-# Install PHP dependencies
-composer install
-if [ ! $? = 0 ]; then
-    exit 1
-fi
-
-# Install JS dependencies
-yarn install
-if [ ! $? = 0 ]; then
-    exit 1
-fi
-
-# Build assets
-yarn build
-if [ ! $? = 0 ]; then
-    exit 1
-fi
-
 # Generate a random password for the new mysql user
 mysqlpassword=$(openssl rand -base64 20)
 if [ ! $? = 0 ]; then
@@ -110,6 +92,24 @@ fi
 
 # Set folders permissions to 755
 sudo find /var/www/${appname} -type d -exec chmod 755 {} \;
+if [ ! $? = 0 ]; then
+    exit 1
+fi
+
+# Install PHP dependencies
+composer install
+if [ ! $? = 0 ]; then
+    exit 1
+fi
+
+# Install JS dependencies
+yarn install
+if [ ! $? = 0 ]; then
+    exit 1
+fi
+
+# Build assets
+yarn build
 if [ ! $? = 0 ]; then
     exit 1
 fi
