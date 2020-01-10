@@ -58,14 +58,14 @@ Ubuntu 18.04:
 
 ```bash
 # Get and execute script directly
-bash <(wget -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_configure_dev_env.sh)
+bash <(wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_configure_dev_env.sh)
 ```
 
 MacOS 10.15:
 
 ```bash
 # Get and execute script directly
-bash <(curl -L https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/macos10.15_configure_dev_env.sh)
+bash <(curl -L -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/macos10.15_configure_dev_env.sh)
 ```
 
 Windows 10:
@@ -87,7 +87,7 @@ Ubuntu 18.04 server:
 
 ```bash
 # Get and execute script directly
-bash <(wget -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_configure_deploy_env.sh)
+bash <(wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_configure_deploy_env.sh)
 ```
 
 *See [manual instructions](#manual-configuration-deploy-a-new-app) for details.*
@@ -102,7 +102,7 @@ Ubuntu 18.04 (remote machine):
 
 ```bash
 # Get and execute script directly
-bash <(wget -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_create_app.sh)
+bash <(wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_create_app.sh)
 ```
 
 *Note: just after the "bash" command, you can pass the app name, the domain name and the repository URL as arguments in order to make the script non-interactive (eg. … bash myawesameapp example.com <https://github.com/me/myapp>).*
@@ -117,7 +117,7 @@ Ubuntu 18.04 (remote machine):
 
 ```bash
 # Get and execute script directly
-bash <(wget -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_update_app.sh)
+bash <(wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_update_app.sh)
 ```
 
 *Note: just after the "bash" command, you can pass the app name as an argument in order to make the script non-interactive (eg. … bash myawesameapp).*
@@ -148,7 +148,7 @@ jobs:
         sshpass -p ${{ SSH_PASS }} ssh \
         -tt ${{ SSH_USER }}@${{ SSH_HOST }} \
         -o StrictHostKeyChecking=no \
-        "appname=${{ APP_NAME }} && $(wget -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_update_app.sh)"
+        "appname=${{ APP_NAME }} && $(wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_update_app.sh)"
 ```
 
 *Note: you must define SSH_PASS, SSH_USER, SSh_HOST and APP_NAME variables in the "Settings > Secrets" section of your GitHub repository. The APP_NAME value must match the one used to deploy the app initially.*
@@ -567,7 +567,7 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 
 ```bash
 # Get and execute configuration script directly
-wget -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_configure_deploy_env.sh | bash
+wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_configure_deploy_env.sh | bash
 ```
 
 ## Manual configuration: deploy environment
