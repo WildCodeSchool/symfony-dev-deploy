@@ -616,7 +616,7 @@ We will enable Ubuntu firewall in order to prevent remote access to our machine.
 # Add rules and activate firewall
 sudo ufw allow OpenSSH
 sudo ufw allow in "Apache Full"
-sudo ufw enable
+echo 'y' | sudo ufw enable
 ```
 
 ## Manual configuration: deploy a new app

@@ -43,7 +43,7 @@ sudo ufw allow in "Apache Full"
 if [ ! $? = 0 ]; then
     exit 1
 fi
-sudo ufw enable
+echo 'y' | sudo ufw enable
 if [ ! $? = 0 ]; then
     exit 1
 fi
