@@ -71,23 +71,24 @@ phpinipath=$(php -r "echo php_ini_loaded_file();")
 if [ ! $? = 0 ]; then
     exit 1
 fi
-sudo sed -e 's/post_max_size = 8M/post_max_size = 64M/g' ${phpinipath} > ${phpinipath}.tmp
+sudo sed -e 's/post_max_size = 8M/post_max_size = 64M/g' ${phpinipath} > ./php.ini.tmp
 if [ ! $? = 0 ]; then
     exit 1
 fi
-sudo mv ${phpinipath}.tmp ${phpinipath}
+sudo mv ./php.ini.tmp ${phpinipath}
 if [ ! $? = 0 ]; then
     exit 1
 fi
-sudo sed -e 's/upload_max_filesize = 8M/upload_max_filesize = 64M/g' ${phpinipath} > ${phpinipath}.tmp
+sudo sed -e 's/upload_max_filesize = 8M/upload_max_filesize = 64M/g' ${phpinipath} > ./php.ini.tmp
 if [ ! $? = 0 ]; then
     exit 1
 fi
+sudo mv ./php.ini.tmp ${phpinipath}
 sudo sed -e 's/memory_limit = 128M/memory_limit = -1/g' ${phpinipath}
 if [ ! $? = 0 ]; then
     exit 1
 fi
-sudo mv ${phpinipath}.tmp ${phpinipath}
+sudo mv ./php.ini.tmp ${phpinipath}
 if [ ! $? = 0 ]; then
     exit 1
 fi
