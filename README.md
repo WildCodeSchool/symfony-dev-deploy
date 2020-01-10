@@ -532,11 +532,15 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 Ubuntu 18.04:
 
 ```bash
-# Install
-curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.21.1
+# Add Yarn official repository
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
-# Reload $PATH
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# Update packages list
+sudo apt update
+
+# Install
+sudo apt install yarn=1.21* -y
 ```
 
 MacOS 10.15:
