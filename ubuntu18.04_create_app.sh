@@ -146,7 +146,7 @@ if [ ! $? = 0 ]; then
 fi
 
 # Get a new HTTPS certficate
-certbot certonly --webroot -w /var/www/${appname} -d ${appdomain}
+certbot certonly --webroot -w /var/www/${appname}/public -d ${appdomain}
 if [ ! $? = 0 ]; then
     exit 1
 fi

@@ -752,7 +752,7 @@ sudo service apache2 restart
 
 ```bash
 # Get a new HTTPS certficate
-certbot certonly --webroot -w /var/www/${appname} -d ${appdomain}
+certbot certonly --webroot -w /var/www/${appname}/public -d ${appdomain}
 
 # Replace existing conf (copy and paste all stuffs from "cat" to last "EOF" in your terminal)
 cat > /etc/apache2/sites-available/${appname}.conf <<EOF
