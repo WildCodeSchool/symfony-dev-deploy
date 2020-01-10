@@ -84,6 +84,9 @@ if [ ! $? = 0 ]; then
     exit 1
 fi
 sudo mv ./php.ini.tmp ${phpinipath}
+if [ ! $? = 0 ]; then
+    exit 1
+fi
 sudo sed -e 's/memory_limit = 128M/memory_limit = -1/g' ${phpinipath} > ./php.ini.tmp
 if [ ! $? = 0 ]; then
     exit 1
