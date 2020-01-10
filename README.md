@@ -600,7 +600,7 @@ In order to get SSL certifications, we need certbot.
 ```bash
 # Add Certbot official repositories
 sudo add-apt-repository universe
-sudo add-apt-repository ppa:certbot/certbot
+sudo add-apt-repository ppa:certbot/certbot -y
 
 # Install
 sudo apt install certbot -y

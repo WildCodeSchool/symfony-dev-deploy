@@ -23,7 +23,7 @@ sudo add-apt-repository universe
 if [ ! $? = 0 ]; then
     exit 1
 fi
-sudo add-apt-repository ppa:certbot/certbot
+sudo add-apt-repository ppa:certbot/certbot -y
 if [ ! $? = 0 ]; then
     exit 1
 fi
