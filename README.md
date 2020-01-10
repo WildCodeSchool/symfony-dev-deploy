@@ -81,7 +81,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 
 *Note: you first need to install everything from [dev environment](#configure-dev-environment).*
 
-Ubuntu 18.04:
+Ubuntu 18.04 server:
 
 ```bash
 # Get and execute script directly
