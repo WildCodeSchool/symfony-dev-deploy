@@ -695,13 +695,13 @@ yarn build
 
 ```bash
 # Set ownership to Apache
-chown -R www-data:www-data /var/www/${appname}
+sudo chown -R www-data:www-data /var/www/${appname}
 
 # Set files permissions to 644
-find /var/www/${appname} -type f -exec chmod 644 {} \;
+sudo find /var/www/${appname} -type f -exec chmod 644 {} \;
 
 # Set folders permissions to 755
-find /var/www/${appname} -type d -exec chmod 755 {} \;
+sudo find /var/www/${appname} -type d -exec chmod 755 {} \;
 ```
 
 ### Set up the database and the production mode
@@ -768,7 +768,7 @@ sudo service apache2 restart
 
 ```bash
 # Get a new HTTPS certficate
-certbot certonly --webroot -w /var/www/${appname}/public -d ${appdomain}
+sudo certbot certonly --webroot -w /var/www/${appname}/public -d ${appdomain}
 
 # Replace existing conf (copy and paste all stuffs from "cat" to last "EOF" in your terminal)
 cat > /etc/apache2/sites-available/${appname}.conf <<EOF
