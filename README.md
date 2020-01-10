@@ -19,16 +19,16 @@ The goal is to provide an opinionated, fully tested set of softwares that make a
     2. [Configure deploy environment](#configure-deploy-environment)
     3. [Deploy a new app](#deploy-a-new-app)
     4. [Deploy updates of an existing app](#deploy-updates-of-an-existing-app)
-    5. [Deploy updates automatically with GitHub Actions](#deploy-updates-automatically-with-gitHub-actions)
+    5. [Deploy updates automatically with GitHub Actions](#deploy-updates-automatically-with-github-actions)
 * [Manual configuration: dev environment](#manual-configuration-dev-environment)
     1. [Prerequisites](#prerequisites)
     2. [Git](#git)
     3. [Symfony CLI](#symfony-cli)
-    4. [PHP 7.3](#php-7.3)
-    5. [Composer 1.9](#composer-1.9)
-    6. [MariaDB 10.4](#mariadb-10.4)
+    4. [PHP 7.3](#php-73)
+    5. [Composer 1.9](#composer-19)
+    6. [MariaDB 10.4](#mariadb-104)
     7. [NodeJS 12](#nodejs-12)
-    8. [Yarn 1.21](#yarn-1.21)
+    8. [Yarn 1.21](#yarn-121)
 * [Manual configuration: deploy environment](#manual-configuration-deploy-environment)
     1. [Apache 2](#apache-2)
     2. [Certbot](#certbot)
@@ -40,7 +40,7 @@ The goal is to provide an opinionated, fully tested set of softwares that make a
    4. [Set permissions](#set-permissions)
    5. [Install dependencies and build assets](#install-dependencies-and-build-assets)
    6. [Set up the web server](#set-up-the-web-server)
-   7. [Enabling HTTPS & configure for Symfony](#enabling-https--configure-for-Symfony)
+   7. [Enabling HTTPS & configure for Symfony](#enabling-https--configure-for-symfony)
 * [Manual configuration: deploy updates of an existing app](#manual-configuration-deploy-updates-of-an-existing-app)
    1. [Set up variable](#set-up-variable)
    2. [Download updates of our app](#download-updates-of-our-app)
@@ -57,21 +57,21 @@ Ubuntu 18.04:
 
 ```bash
 # Get and execute script directly
-bash <(wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_configure_dev_env.sh)
+bash <(wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/WildCodeSchool/symfony-dev-deploy/master/ubuntu18.04_configure_dev_env.sh)
 ```
 
 MacOS 10.15:
 
 ```bash
 # Get and execute script directly
-bash <(curl -L -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/macos10.15_configure_dev_env.sh)
+bash <(curl -L -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/WildCodeSchool/symfony-dev-deploy/master/macos10.15_configure_dev_env.sh)
 ```
 
 Windows 10:
 
 ```powershell
 # Get and execute script directly
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/windows10_configure_dev_env.ps1'))
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/WildCodeSchool/symfony-dev-deploy/master/windows10_configure_dev_env.ps1'))
 ```
 
 *See [manual instructions](#manual-configuration-dev-environment) for details.*
@@ -86,7 +86,7 @@ Ubuntu 18.04 server:
 
 ```bash
 # Get and execute script directly
-bash <(wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_configure_deploy_env.sh)
+bash <(wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/WildCodeSchool/symfony-dev-deploy/master/ubuntu18.04_configure_deploy_env.sh)
 ```
 
 *See [manual instructions](#manual-configuration-deploy-a-new-app) for details.*
@@ -101,7 +101,7 @@ Ubuntu 18.04 (remote machine):
 
 ```bash
 # Get and execute script directly
-bash <(wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_create_app.sh)
+bash <(wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/WildCodeSchool/symfony-dev-deploy/master/ubuntu18.04_create_app.sh)
 ```
 
 *Note: just after the "bash" command, you can pass the app name, the domain name and the repository URL as arguments in order to make the script non-interactive (eg. … bash myawesameapp example.com <https://github.com/me/myapp>).*
@@ -116,7 +116,7 @@ Ubuntu 18.04 (remote machine):
 
 ```bash
 # Get and execute script directly
-bash <(wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_update_app.sh)
+bash <(wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/WildCodeSchool/symfony-dev-deploy/master/ubuntu18.04_update_app.sh)
 ```
 
 *Note: just after the "bash" command, you can pass the app name as an argument in order to make the script non-interactive (eg. … bash myawesameapp).*
@@ -147,7 +147,7 @@ jobs:
         sshpass -p ${{ secrets.SSH_PASS }} ssh \
         -tt ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
         -o StrictHostKeyChecking=no \
-        "appname=${{ secrets.APP_NAME }} && $(wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_update_app.sh)"
+        "appname=${{ secrets.APP_NAME }} && $(wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/WildCodeSchool/symfony-dev-deploy/master/ubuntu18.04_update_app.sh)"
 ```
 
 *Note: you must define SSH_PASS, SSH_USER, SSh_HOST and APP_NAME variables in the "Settings > Secrets" section of your GitHub repository. The APP_NAME value must match the one used to deploy the app initially.*
@@ -570,7 +570,7 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 
 ```bash
 # Get and execute configuration script directly
-wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/RomainFallet/symfony-dev-deploy/master/ubuntu18.04_configure_deploy_env.sh | bash
+wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/WildCodeSchool/symfony-dev-deploy/master/ubuntu18.04_configure_deploy_env.sh | bash
 ```
 
 ## Manual configuration: deploy environment
