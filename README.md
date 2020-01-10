@@ -35,16 +35,18 @@ The goal is to provide an opinionated, fully tested set of softwares that make a
     3. [Firewall](#firewall)
 * [Manual configuration: deploy a new app](#manual-configuration-deploy-a-new-app)
    1. [Set up variables](#set-up-variables)
-   2. [Download our app and set permissions](#download-our-app-and-set-permissions)
+   2. [Download our app](#download-our-app)
    3. [Install dependencies and build assets](#install-dependencies-and-build-assets)
-   4. [Set up the database and the production mode](#set-up-the-database-and-the-production-mode)
-   5. [Set up the web server](#set-up-the-web-server)
-   6. [Enabling HTTPS & configure for Symfony](#enabling-https--configure-for-Symfony)
+   4. [Set permissions](#set-permissions)
+   5. [Set up the database and the production mode](#set-up-the-database-and-the-production-mode)
+   6. [Set up the web server](#set-up-the-web-server)
+   7. [Enabling HTTPS & configure for Symfony](#enabling-https--configure-for-Symfony)
 * [Manual configuration: deploy updates of an existing app](#manual-configuration-deploy-updates-of-an-existing-app)
    1. [Set up variable](#set-up-variable)
-   2. [Download updates of our app and set permissions](#download-updates-of-our-app-and-set-permissions)
+   2. [Download updates of our app](#download-updates-of-our-app)
    3. [Update dependencies and rebuild assets](#update-dependencies-and-rebuild-assets)
-   4. [Update database structure & clearing cache](#update-database-structure--clearing-cache)
+   4. [Set again permissions](#set-again-permissions)
+   5. [Update database structure & clearing cache](#update-database-structure--clearing-cache)
 
 ## Quickstart
 
@@ -652,25 +654,13 @@ else
 fi
 ```
 
-### Download our app and set permissions
+### Download our app
 
 [Back to top ↑](#table-of-contents)
 
 ```bash
 # Clone app repository
 git clone ${apprepositoryurl} /var/www/${appname}
-
-# Set ownership to Apache
-chown -R www-data:www-data /var/www/${appname}
-
-# Set files permissions to 644
-find /var/www/${appname} -type f -exec chmod 644 {} \;
-
-# Set folders permissions to 755
-find /var/www/${appname} -type d -exec chmod 755 {} \;
-
-# Go inside the app directory
-cd /var/www/${appname}
 ```
 
 ### Install dependencies and build assets
@@ -686,6 +676,24 @@ yarn install
 
 # Build assets
 yarn build
+```
+
+### Set permissions
+
+[Back to top ↑](#table-of-contents)
+
+```bash
+# Set ownership to Apache
+chown -R www-data:www-data /var/www/${appname}
+
+# Set files permissions to 644
+find /var/www/${appname} -type f -exec chmod 644 {} \;
+
+# Set folders permissions to 755
+find /var/www/${appname} -type d -exec chmod 755 {} \;
+
+# Go inside the app directory
+cd /var/www/${appname}
 ```
 
 ### Set up the database and the production mode
@@ -813,7 +821,7 @@ else
 fi
 ```
 
-### Download updates of our app and set permissions
+### Download updates of our app
 
 [Back to top ↑](#table-of-contents)
 
@@ -823,15 +831,6 @@ cd /var/www/${appname}
 
 # Pull the latest changes
 git pull
-
-# Set ownership to Apache
-chown -R www-data:www-data /var/www/${appname}
-
-# Set files permissions to 644
-find /var/www/${appname} -type f -exec chmod 644 {} \;
-
-# Set folders permissions to 755
-find /var/www/${appname} -type d -exec chmod 755 {} \;
 ```
 
 ### Update dependencies and rebuild assets
@@ -847,6 +846,24 @@ yarn install
 
 # Build assets
 yarn build
+```
+
+### Set again permissions
+
+[Back to top ↑](#table-of-contents)
+
+```bash
+# Set ownership to Apache
+chown -R www-data:www-data /var/www/${appname}
+
+# Set files permissions to 644
+find /var/www/${appname} -type f -exec chmod 644 {} \;
+
+# Set folders permissions to 755
+find /var/www/${appname} -type d -exec chmod 755 {} \;
+
+# Go inside the app directory
+cd /var/www/${appname}
 ```
 
 ### Update database structure & clearing cache

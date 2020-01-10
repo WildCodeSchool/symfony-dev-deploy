@@ -19,24 +19,6 @@ if [ ! $? = 0 ]; then
     exit 1
 fi
 
-# Set ownership to Apache
-chown -R www-data:www-data /var/www/${appname}
-if [ ! $? = 0 ]; then
-    exit 1
-fi
-
-# Set files permissions to 644
-find /var/www/${appname} -type f -exec chmod 644 {} \;
-if [ ! $? = 0 ]; then
-    exit 1
-fi
-
-# Set folders permissions to 755
-find /var/www/${appname} -type d -exec chmod 755 {} \;
-if [ ! $? = 0 ]; then
-    exit 1
-fi
-
 # Install PHP dependencies
 composer install
 if [ ! $? = 0 ]; then
@@ -51,6 +33,24 @@ fi
 
 # Build assets
 yarn build
+if [ ! $? = 0 ]; then
+    exit 1
+fi
+
+# Set ownership to Apache
+chown -R www-data:www-data /var/www/${appname}
+if [ ! $? = 0 ]; then
+    exit 1
+fi
+
+# Set files permissions to 644
+find /var/www/${appname} -type f -exec chmod 644 {} \;
+if [ ! $? = 0 ]; then
+    exit 1
+fi
+
+# Set folders permissions to 755
+find /var/www/${appname} -type d -exec chmod 755 {} \;
 if [ ! $? = 0 ]; then
     exit 1
 fi
