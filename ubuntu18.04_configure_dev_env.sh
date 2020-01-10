@@ -75,7 +75,7 @@ sudo sed -e 's/post_max_size = 8M/post_max_size = 64M/g' ${phpinipath} > ${phpin
 if [ ! $? = 0 ]; then
     exit 1
 fi
-mv ${phpinipath}.tmp ${phpinipath}
+sudo mv ${phpinipath}.tmp ${phpinipath}
 if [ ! $? = 0 ]; then
     exit 1
 fi
@@ -84,7 +84,10 @@ if [ ! $? = 0 ]; then
     exit 1
 fi
 sudo sed -e 's/memory_limit = 128M/memory_limit = -1/g' ${phpinipath}
-mv ${phpinipath}.tmp ${phpinipath}
+if [ ! $? = 0 ]; then
+    exit 1
+fi
+sudo mv ${phpinipath}.tmp ${phpinipath}
 if [ ! $? = 0 ]; then
     exit 1
 fi

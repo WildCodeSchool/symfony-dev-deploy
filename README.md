@@ -308,10 +308,11 @@ sudo apt install php7.3-mbstring php7.3-mysql php7.3-xml php7.3-curl php7.3-zip 
 # Update some configuration in php.ini
 phpinipath=$(php -r "echo php_ini_loaded_file();")
 sudo sed -e 's/post_max_size = 8M/post_max_size = 64M/g' ${phpinipath} > ${phpinipath}.tmp
-mv ${phpinipath}.tmp ${phpinipath}
+sudo mv ${phpinipath}.tmp ${phpinipath}
 sudo sed -e 's/upload_max_filesize = 8M/upload_max_filesize = 64M/g' ${phpinipath} > ${phpinipath}.tmp
+sudo mv ${phpinipath}.tmp ${phpinipath}
 sudo sed -e 's/memory_limit = 128M/memory_limit = -1/g' ${phpinipath}
-mv ${phpinipath}.tmp ${phpinipath}
+sudo mv ${phpinipath}.tmp ${phpinipath}
 
 # Replace default PHP installation in $PATH
 sudo update-alternatives --set php /usr/bin/php7.3
@@ -339,11 +340,11 @@ pecl install xdebug
 # Update some configuration in php.ini
 phpinipath=$(php -r "echo php_ini_loaded_file();")
 sudo sed -i '' -e 's/post_max_size = 8M/post_max_size = 64M/g' ${phpinipath} > ${phpinipath}.tmp
-mv ${phpinipath}.tmp ${phpinipath}
+sudo mv ${phpinipath}.tmp ${phpinipath}
 sudo sed -i '' -e 's/upload_max_filesize = 8M/upload_max_filesize = 64M/g' ${phpinipath} > ${phpinipath}.tmp
-mv ${phpinipath}.tmp ${phpinipath}
+sudo mv ${phpinipath}.tmp ${phpinipath}
 sudo sed -i '' -e 's/memory_limit = 128M/memory_limit = -1/g' ${phpinipath} > ${phpinipath}.tmp
-mv ${phpinipath}.tmp ${phpinipath}
+sudo mv ${phpinipath}.tmp ${phpinipath}
 ```
 
 **Installed PHP Modules:** bcmath, bz2, calendar, Core, ctype, curl, date, dba, dom, exif, fileinfo, filter, ftp, gd, gettext, gmp, hash, iconv, intl, json, ldap, libxml, mbstring, mysqli, mysqlnd, odbc, openssl, pcntl, pcre, PDO, pdo_dblib, pdo_mysql, PDO_ODBC, pdo_pgsql, pdo_sqlite, pgsql, Phar, phpdbg_webhelper, posix, pspell, readline, Reflection, session, shmop, SimpleXML, soap, sockets, sodium, SPL, sqlite3, standard, sysvmsg, sysvsem, sysvshm, tidy, tokenizer, wddx, xdebug, xml, xmlreader, xmlrpc, xmlwriter, xsl, Zend OPcache, zip, zlib
