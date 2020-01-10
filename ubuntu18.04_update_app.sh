@@ -56,10 +56,7 @@ if [ ! $? = 0 ]; then
 fi
 
 # Execute database migrations
-php bin/console doctrine:migrations:migrate -n 2>/dev/null
-if [ ! $? = 0 ]; then
-    exit 1
-fi
+php bin/console doctrine:migrations:migrate -n
 
 # Clear the cache
 php bin/console cache:clear

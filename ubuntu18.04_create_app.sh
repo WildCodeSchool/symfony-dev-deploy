@@ -112,10 +112,7 @@ if [ ! $? = 0 ]; then
 fi
 
 # Execute database migrations
-php bin/console doctrine:migrations:migrate -n 2>/dev/null
-if [ ! $? = 0 ]; then
-    exit 1
-fi
+php bin/console doctrine:migrations:migrate -n
 
 # Create an Apache conf file for the app (copy and paste all stuffs from "cat" to "EOF" in your terminal)
 cat > /etc/apache2/sites-available/${appname}.conf <<EOF
