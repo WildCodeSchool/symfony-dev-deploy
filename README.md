@@ -891,7 +891,7 @@ yarn install
 yarn build
 ```
 
-### Update database structure & clearing cache
+### Update database structure & clear cache
 
 [Back to top ↑](#table-of-contents)
 
