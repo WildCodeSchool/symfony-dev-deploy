@@ -152,7 +152,7 @@ jobs:
     runs-on: ubuntu-18.04
 
     steps:
-    - name: Deploy updates
+    - name: Deploy through SSH
       run: |
         sshpass -p ${{ secrets.SSH_PASS }} ssh \
         -tt ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
