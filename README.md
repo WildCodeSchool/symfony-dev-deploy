@@ -4,7 +4,7 @@ Welcome! Here is what this repository can do for you:
 
 * Provide instructions to configure a similar Symfony development environment on each platform (Ubuntu 18.04 Desktop, macOS 10.15 and Windows 10).
 
-* Provide instructions to configure a deploy environment on an Ubuntu 18.04 Server machine and automate the update process with Github Actions.
+* Provide instructions to configure a deploy environment on an Ubuntu 18.04 Server machine and automate the update process of a Symfony app created with our [starter kit](https://github.com/WildCodeSchool/sf4-pjt3-starter-kit) with Github Actions.
 
 The goal is to provide an opinionated, fully tested environment, that just work.
 
