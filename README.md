@@ -2,11 +2,11 @@
 
 Welcome! Here is what this repository can do for you:
 
-* Provide instructions to configure a similar Symfony development environment on each platform (macOS, Ubuntu and Windows).
+* Provide instructions to configure a similar Symfony development environment on each platform (Ubuntu 18.04 Desktop, macOS 10.15 and Windows 10).
 
-* Provide instructions to configure a deploy environment on a Ubuntu machine and automate the update process with Github Actions.
+* Provide instructions to configure a deploy environment on an Ubuntu 18.04 Server machine and automate the update process with Github Actions.
 
-The goal is to provide an opinionated, fully tested set of softwares that make an environment that just work.
+The goal is to provide an opinionated, fully tested environment, that just work.
 
 **This means no headaches trying to configure an environment or a specific tool and no more versions conflicts!**
 
@@ -14,6 +14,7 @@ The goal is to provide an opinionated, fully tested set of softwares that make a
 
 ## Table of contents
 
+* [Important notice](#important-notice)
 * [Quickstart](#quickstart)
     1. [Configure dev environment](#configure-dev-environment)
     2. [Configure deploy environment](#configure-deploy-environment)
@@ -46,6 +47,15 @@ The goal is to provide an opinionated, fully tested set of softwares that make a
    2. [Download updates of our app](#download-updates-of-our-app)
    3. [Update dependencies and rebuild assets](#update-dependencies-and-rebuild-assets)
    4. [Update database structure & clearing cache](#update-database-structure--clearing-cache)
+
+
+## Important notice
+
+Configuration scripts for dev & deploy environments are meant to be executed after fresh installation of each OS.
+
+Their purpose in not to be bullet-proof neither to handle all cases (we will not build a new MAMP/XAMPP). They are just here to get started quickly as they just execute the exact same commands listed in "manual configuration" sections.
+
+**So, if you have any trouble a non fresh-installed machine, please use "manual configuration" sections to complete your installation environment process.**
 
 ## Quickstart
 
@@ -82,7 +92,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 
 *Note: you first need to install everything from [dev environment](#configure-dev-environment).*
 
-Ubuntu 18.04 server:
+Ubuntu 18.04 Server:
 
 ```bash
 # Get and execute script directly
@@ -97,7 +107,7 @@ bash <(wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/WildCo
 
 *Note: you first need to add a A or AAAA record on your domain name poiting to this machine IP address.*
 
-Ubuntu 18.04 (remote machine):
+Ubuntu 18.04 Server:
 
 ```bash
 # Get and execute script directly
@@ -112,7 +122,7 @@ bash <(wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/WildCo
 
 [Back to top ↑](#table-of-contents)
 
-Ubuntu 18.04 (remote machine):
+Ubuntu 18.04 Server:
 
 ```bash
 # Get and execute script directly
@@ -127,7 +137,7 @@ bash <(wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/WildCo
 
 To do that you simply have to add a basic Github Actions configuration in your repository and execute the update commands through SSH.
 
-Create a file in ".github/workflow/deploy.yml" at the root of your project containing:
+Create a file in ".github/workflows/deploy.yml" at the root of your project containing:
 
 ```yaml
 name: Deploy updates
@@ -150,7 +160,7 @@ jobs:
         "appname=${{ secrets.APP_NAME }} && $(wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/WildCodeSchool/symfony-dev-deploy/master/ubuntu18.04_update_app.sh)"
 ```
 
-*Note: you must define SSH_PASS, SSH_USER, SSh_HOST and APP_NAME variables in the "Settings > Secrets" section of your GitHub repository. The APP_NAME value must match the one used to deploy the app initially.*
+*Note: you must define SSH_PASS, SSH_USER, SSH_HOST and APP_NAME variables in the "Settings > Secrets" section of your GitHub repository. The APP_NAME value must match the one used to deploy the app initially.*
 
 ## Manual configuration: dev environment
 
@@ -158,7 +168,7 @@ jobs:
 
 [Back to top ↑](#table-of-contents)
 
-Ubuntu 18.04:
+Ubuntu 18.04 Desktop:
 
 ![curl](https://user-images.githubusercontent.com/6952638/70372369-31785f00-18de-11ea-9835-2946537372ea.jpg)
 
@@ -209,7 +219,7 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 
 ![git](https://user-images.githubusercontent.com/6952638/71176962-3a1c4e00-226b-11ea-83a1-5a66bd37a68b.png)
 
-Ubuntu 18.04:
+Ubuntu 18.04 Desktop:
 
 ```bash
 # Install
@@ -242,7 +252,7 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 
 ![symfony](https://user-images.githubusercontent.com/6952638/71176964-3ab4e480-226b-11ea-8522-081106cbff50.png)
 
-Ubuntu 18.04:
+Ubuntu 18.04 Desktop:
 
 ```bash
 # Download executable in local user folder
@@ -291,7 +301,7 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 
 ![php](https://user-images.githubusercontent.com/6952638/70372327-bca52500-18dd-11ea-8638-7cdab7c5d6e0.png)
 
-Ubuntu 18.04:
+Ubuntu 18.04 Desktop:
 
 ```bash
 # Add PHP official repository
@@ -391,7 +401,7 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 
 ![composer](https://user-images.githubusercontent.com/6952638/70372308-a008ed00-18dd-11ea-9ee0-61d017dfa488.png)
 
-Ubuntu 18.04:
+Ubuntu 18.04 Desktop:
 
 ```bash
 # Download installer
@@ -492,7 +502,7 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 
 ![node](https://user-images.githubusercontent.com/6952638/71177167-a4cd8980-226b-11ea-9095-c96d5b96faa7.png)
 
-Ubuntu 18.04:
+Ubuntu 18.04 Desktop:
 
 ```bash
 # Add NodeJS official repository and update packages list
@@ -528,7 +538,7 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 
 ![yarn](https://user-images.githubusercontent.com/6952638/70372314-a13a1a00-18dd-11ea-9cdb-7b976c2beab8.png)
 
-Ubuntu 18.04:
+Ubuntu 18.04 Desktop:
 
 ```bash
 # Add Yarn official repository
@@ -568,6 +578,8 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 
 *Note: you first need to install everything from [dev environment](#dev-environment-quick-configuration).*
 
+Ubuntu 18.04 Server:
+
 ```bash
 # Get and execute configuration script directly
 wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/WildCodeSchool/symfony-dev-deploy/master/ubuntu18.04_configure_deploy_env.sh | bash
@@ -581,7 +593,7 @@ wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/WildCodeSchoo
 
 [Back to top ↑](#table-of-contents)
 
-We first need to install the Apache web server.
+Ubuntu 18.04 Server:
 
 ```bash
 # Update packages list
@@ -606,6 +618,8 @@ sudo mv $(php -r "echo php_ini_loaded_file();") /etc/php/7.3/apache2/php.ini
 
 In order to get SSL certifications, we need certbot.
 
+Ubuntu 18.04 Server:
+
 ```bash
 # Add Certbot official repositories
 sudo add-apt-repository universe
@@ -620,6 +634,8 @@ sudo apt install certbot -y
 [Back to top ↑](#table-of-contents)
 
 We will enable Ubuntu firewall in order to prevent remote access to our machine. We will only allow SSH (for remote SSH access) and Apache2 (for remote web access). **Careful, you need to allow SSH before enabling the firewall, if not, you may lose access to your machine.**
+
+Ubuntu 18.04 Server:
 
 ```bash
 # Add rules and activate firewall
@@ -637,6 +653,8 @@ echo 'y' | sudo ufw enable
 [Back to top ↑](#table-of-contents)
 
 We need to configure some variables in order to reduce repetitions/replacements in the next commands.
+
+Ubuntu 18.04 Server:
 
 ```bash
 # Get app name from parameter or ask user for it (copy and paste all stuffs between "if" and "fi" in your terminal)
@@ -665,6 +683,8 @@ fi
 
 [Back to top ↑](#table-of-contents)
 
+Ubuntu 18.04 Server:
+
 ```bash
 # Clone app repository
 git clone ${apprepositoryurl} /var/www/${appname}
@@ -676,6 +696,8 @@ cd /var/www/${appname}
 ### Set up the database and the production mode
 
 [Back to top ↑](#table-of-contents)
+
+Ubuntu 18.04 Server:
 
 ```bash
 # Generate a random password for the new mysql user
@@ -707,6 +729,8 @@ php bin/console doctrine:migrations:migrate -n
 
 [Back to top ↑](#table-of-contents)
 
+Ubuntu 18.04 Server:
+
 ```bash
 # Set ownership to Apache
 sudo chown -R www-data:www-data /var/www/${appname}
@@ -722,6 +746,8 @@ sudo find /var/www/${appname} -type d -exec chmod 755 {} \;
 
 [Back to top ↑](#table-of-contents)
 
+Ubuntu 18.04 Server:
+
 ```bash
 # Install PHP dependencies
 composer install
@@ -736,6 +762,8 @@ yarn build
 ### Set up the web server
 
 [Back to top ↑](#table-of-contents)
+
+Ubuntu 18.04 Server:
 
 ```bash
 # Create an Apache conf file for the app (copy and paste all stuffs from "cat" to "EOF" in your terminal)
@@ -764,6 +792,8 @@ sudo service apache2 restart
 ### Enabling HTTPS & configure for Symfony
 
 [Back to top ↑](#table-of-contents)
+
+Ubuntu 18.04 Server:
 
 ```bash
 # Get a new HTTPS certficate
@@ -819,6 +849,8 @@ sudo service apache2 restart
 
 ### Set up variable
 
+Ubuntu 18.04 Server:
+
 ```bash
 # Get app name from parameter or ask user for it (copy and paste all code between "if" and "fi" in your terminal)
 if [[ -z ${1} ]] && [[ -z "${appname}" ]]; then
@@ -832,6 +864,8 @@ fi
 
 [Back to top ↑](#table-of-contents)
 
+Ubuntu 18.04 Server:
+
 ```bash
 # Go inside the app directory
 cd /var/www/${appname}
@@ -843,6 +877,8 @@ git pull
 ### Update dependencies and rebuild assets
 
 [Back to top ↑](#table-of-contents)
+
+Ubuntu 18.04 Server:
 
 ```bash
 # Install PHP dependencies
@@ -858,6 +894,8 @@ yarn build
 ### Update database structure & clearing cache
 
 [Back to top ↑](#table-of-contents)
+
+Ubuntu 18.04 Server:
 
 ```bash
 # Execute database migrations
