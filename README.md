@@ -701,7 +701,7 @@ Ubuntu 18.04 Server:
 
 ```bash
 # Generate a random password for the new mysql user
-mysqlpassword=$(openssl rand -base64 20)
+mysqlpassword=$(openssl rand -hex 15)
 
 # Create database and related user for the app and grant permissions (copy and paste all stuffs from "sudo mysql" to "EOF" in your terminal)
 sudo mysql <<EOF

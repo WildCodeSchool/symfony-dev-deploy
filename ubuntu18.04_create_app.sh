@@ -34,7 +34,7 @@ if [ ! $? = 0 ]; then
 fi
 
 # Generate a random password for the new mysql user
-mysqlpassword=$(openssl rand -base64 20)
+mysqlpassword=$(openssl rand -hex 15)
 if [ ! $? = 0 ]; then
     exit 1
 fi
