@@ -48,7 +48,6 @@ The goal is to provide an opinionated, fully tested environment, that just work.
    3. [Update dependencies and rebuild assets](#update-dependencies-and-rebuild-assets)
    4. [Update database structure & clearing cache](#update-database-structure--clearing-cache)
 
-
 ## Important notice
 
 Configuration scripts for dev & deploy environments are meant to be executed after fresh installation of each OS.
@@ -722,6 +721,7 @@ sed -e 's,DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name,DATABA
 mv ./.env.local.tmp ./.env.local
 
 # Execute database migrations
+php bin/console doctrine:migrations:diff
 php bin/console doctrine:migrations:migrate -n
 ```
 
@@ -899,6 +899,7 @@ Ubuntu 18.04 Server:
 
 ```bash
 # Execute database migrations
+php bin/console doctrine:migrations:diff
 php bin/console doctrine:migrations:migrate -n
 
 # Clear the cache

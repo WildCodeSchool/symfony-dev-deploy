@@ -38,7 +38,14 @@ if [ ! $? = 0 ]; then
 fi
 
 # Execute database migrations
+php bin/console doctrine:migrations:diff
+if [ ! $? = 0 ]; then
+    exit 1
+fi
 php bin/console doctrine:migrations:migrate -n
+if [ ! $? = 0 ]; then
+    exit 1
+fi
 
 # Clear the cache
 php bin/console cache:clear
