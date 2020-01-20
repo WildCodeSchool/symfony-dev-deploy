@@ -40,8 +40,9 @@ The goal is to provide an opinionated, fully tested environment, that just work.
    3. [Set up the database and the production mode](#set-up-the-database-and-the-production-mode)
    4. [Set permissions](#set-permissions)
    5. [Install dependencies and build assets](#install-dependencies-and-build-assets)
-   6. [Set up the web server](#set-up-the-web-server)
-   7. [Enabling HTTPS & configure for Symfony](#enabling-https--configure-for-symfony)
+   6. [Execute database migrations](#execute-database-migrations)
+   7. [Set up the web server](#set-up-the-web-server)
+   8. [Enabling HTTPS & configure for Symfony](#enabling-https--configure-for-symfony)
 * [Manual configuration: deploy updates of an existing app](#manual-configuration-deploy-updates-of-an-existing-app)
    1. [Set up variable](#set-up-variable)
    2. [Download updates of our app](#download-updates-of-our-app)
@@ -719,10 +720,6 @@ mv ./.env.local.tmp ./.env.local
 # Set mysql credentials
 sed -e 's,DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name,DATABASE_URL=mysql://'${appname}':'${mysqlpassword}'@127.0.0.1:3306/'${appname}',g' ./.env.local > ./.env.local.tmp
 mv ./.env.local.tmp ./.env.local
-
-# Execute database migrations
-php bin/console doctrine:migrations:diff
-php bin/console doctrine:migrations:migrate -n
 ```
 
 ### Set permissions
@@ -757,6 +754,16 @@ yarn install
 
 # Build assets
 yarn build
+```
+
+### Execute database migrations
+
+[Back to top ↑](#table-of-contents)
+
+```bash
+# Execute database migrations
+php bin/console doctrine:migrations:diff
+php bin/console doctrine:migrations:migrate -n
 ```
 
 ### Set up the web server

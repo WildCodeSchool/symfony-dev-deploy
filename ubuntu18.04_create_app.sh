@@ -75,16 +75,6 @@ if [ ! $? = 0 ]; then
     exit 1
 fi
 
-# Execute database migrations
-php bin/console doctrine:migrations:diff
-if [ ! $? = 0 ]; then
-    exit 1
-fi
-php bin/console doctrine:migrations:migrate -n
-if [ ! $? = 0 ]; then
-    exit 1
-fi
-
 # Set ownership to Apache
 sudo chown -R www-data:www-data /var/www/${appname}
 if [ ! $? = 0 ]; then
@@ -120,6 +110,10 @@ yarn build
 if [ ! $? = 0 ]; then
     exit 1
 fi
+
+# Execute database migrations
+php bin/console doctrine:migrations:diff
+php bin/console doctrine:migrations:migrate -n
 
 # Create an Apache conf file for the app (copy and paste all stuffs from "cat" to "EOF" in your terminal)
 cat > /etc/apache2/sites-available/${appname}.conf <<EOF
