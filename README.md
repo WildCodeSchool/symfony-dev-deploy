@@ -154,7 +154,7 @@ jobs:
     steps:
     - name: Deploy through SSH
       run: |
-        sshpass -p ${{ secrets.SSH_PASS }} ssh \
+        sshpass -p "${{ secrets.SSH_PASS }}" ssh \
         -tt ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
         -o StrictHostKeyChecking=no \
         "appname=${{ secrets.APP_NAME }} && $(wget --no-cache -o /dev/null -O- https://raw.githubusercontent.com/WildCodeSchool/symfony-dev-deploy/master/ubuntu18.04_update_app.sh)"
