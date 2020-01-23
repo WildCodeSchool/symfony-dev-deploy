@@ -318,11 +318,11 @@ sudo apt install php7.3-mbstring php7.3-mysql php7.3-xml php7.3-curl php7.3-zip 
 
 # Update some configuration in php.ini
 phpinipath=$(php -r "echo php_ini_loaded_file();")
-sudo sed -e 's/post_max_size = 8M/post_max_size = 64M/g' ${phpinipath} > ./php.ini.tmp
+sudo bash -c "sed -e 's/post_max_size = 8M/post_max_size = 64M/g' ${phpinipath} > ./php.ini.tmp"
 sudo mv ./php.ini.tmp ${phpinipath}
-sudo sed -e 's/upload_max_filesize = 8M/upload_max_filesize = 64M/g' ${phpinipath} > ./php.ini.tmp
+sudo bash -c "sed -e 's/upload_max_filesize = 8M/upload_max_filesize = 64M/g' ${phpinipath} > ./php.ini.tmp"
 sudo mv ./php.ini.tmp ${phpinipath}
-sudo sed -e 's/memory_limit = 128M/memory_limit = -1/g' ${phpinipath} > ./php.ini.tmp
+sudo bash -c "sed -e 's/memory_limit = 128M/memory_limit = -1/g' ${phpinipath} > ./php.ini.tmp"
 sudo mv ./php.ini.tmp ${phpinipath}
 
 # Replace default PHP installation in $PATH
